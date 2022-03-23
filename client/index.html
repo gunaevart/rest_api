@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+
+    <div id="main">
+        <ul class="ul"></ul>
+    </div>
+
+    <script defer>
+
+         localStorage.setItem('1', 'Vladimir')
+         localStorage.setItem('2', 'ivan')
+         localStorage.setItem('3', 'Nikolai')
+         localStorage.setItem('4', 'Sergei')
+         localStorage.setItem('5', 'Stas')
+
+
+        const mainDiv = document.querySelector('#body')
+        const ul = document.querySelector('.ul')
+
+         for(let i=0; i<localStorage.length; i++) {
+             let key = localStorage.key(i)
+             ul.innerHTML += `
+
+                    <li class="li">${localStorage.getItem(key)} <button name="${key}" type="submit" class="dell">dellete</button></li>
+
+             `
+         }
+            //Вешаем событие клик на ul родитель
+         ul.addEventListener('click', function(e){
+
+             // если при клике мы видем класс dell то удаляем по ключу
+             if (e.target.className == 'dell'){
+
+                 //Заносим имя id кторое находиться в кнопке
+                 let key = e.target.name
+                 // Удаляем из localStorage по id
+                 localStorage.removeItem(key)
+              //Возращаем элемент по селектору
+             const dell = e.target.closest('.dell');
+             if (!dell) {
+                 return;
+             }
+            // Находим родителя данного элемента и удаляем
+             dell.parentElement.remove()
+             console.log(dell)
+             console.log(dell.parentElement)
+             }
+         })
+
+
+
+
+
+
+    </script>
+</body>
+</html>
