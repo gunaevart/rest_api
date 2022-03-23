@@ -7,22 +7,21 @@
     <title>Document</title>
 </head>
 <body id="body">
-
+    
     <div id="main">
+        <input type="text" name="text" id="text">
+        <button type="button" id="add">add</button>
         <ul class="ul"></ul>
     </div>
 
     <script defer>
 
-         localStorage.setItem('1', 'Vladimir')
-         localStorage.setItem('2', 'ivan')
-         localStorage.setItem('3', 'Nikolai')
-         localStorage.setItem('4', 'Sergei')
-         localStorage.setItem('5', 'Stas')
-
-
+        let text = document.querySelector('#text')
+        let add = document.querySelector('#add')
         const mainDiv = document.querySelector('#body')
         const ul = document.querySelector('.ul')
+
+
 
          for(let i=0; i<localStorage.length; i++) {
              let key = localStorage.key(i)
@@ -32,6 +31,7 @@
 
              `
          }
+
             //Вешаем событие клик на ul родитель
          ul.addEventListener('click', function(e){
 
@@ -53,7 +53,11 @@
              console.log(dell.parentElement)
              }
          })
-
+        let count = 1
+        add.onclick = () => {
+            localStorage.setItem(count++, text.value)
+            text.value = ''
+        }
 
 
 
