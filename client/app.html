@@ -9,7 +9,6 @@
 <body>
 
     <main id="main">
-        <p>
             <select id="select">
                 <option selected disabled>Выберите Товар</option>
                 <option value="1">Плуг навесной 2-20</option>
@@ -18,24 +17,26 @@
                 <option value="4">Отвал коммунальный</option>
            </select>
            <button id="add">Добавить</button>
-        </p>
-        <div id="order">
-            <div class="item">One</div>
-            <div class="item">Two</div>
-            <div class="item">Thre</div>
-        </div>
+        <div id="order"></div>
+            <button id="save">Сохранить</button>
     </main>
-    <script>
+    <script defer>
         let order = document.querySelector('#order')
         let add = document.querySelector('#add')
+        let save = document.querySelector('#save')
         let select = document.querySelector('#select')
 
-
+        let mass = []
         add.addEventListener('click', (e) => {
             let txt = select.options[select.selectedIndex].text
-
             order.innerHTML += `<div class="item">"ID" - ${select.value} "Название " ${txt}<br></div>`
+            return mass.push(txt)
         })
+
+            save.addEventListener('click', () => {
+
+                console.log(mass)
+            })
 
         let item = document.querySelectorAll('.item')
         let a = []
@@ -44,8 +45,6 @@
          console.log(div.textContent)
             a.push(div.textContent)
         })
-        console.log(a)
-
 
 
 
