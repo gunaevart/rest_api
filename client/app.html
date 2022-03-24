@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <main id="main">
+        <p>
+            <select id="select">
+                <option selected disabled>Выберите Товар</option>
+                <option value="1">Плуг навесной 2-20</option>
+                <option  value="2">Погрузчик фаворит 800</option>
+                <option value="3">Грабли ворошилки</option>
+                <option value="4">Отвал коммунальный</option>
+           </select>
+           <button id="add">Добавить</button>
+        </p>
+        <div id="order">
+            <div class="item">One</div>
+            <div class="item">Two</div>
+            <div class="item">Thre</div>
+        </div>
+    </main>
+    <script>
+        let order = document.querySelector('#order')
+        let add = document.querySelector('#add')
+        let select = document.querySelector('#select')
+
+
+        add.addEventListener('click', (e) => {
+            let txt = select.options[select.selectedIndex].text
+
+            order.innerHTML += `<div class="item">"ID" - ${select.value} "Название " ${txt}<br></div>`
+        })
+
+        let item = document.querySelectorAll('.item')
+        let a = []
+        let arr = [...item]
+        arr.forEach(div => {
+         console.log(div.textContent)
+            a.push(div.textContent)
+        })
+        console.log(a)
+
+
+
+
+    </script>
+</body>
+</html>
